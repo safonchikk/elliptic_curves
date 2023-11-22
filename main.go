@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math/big"
 	"math/rand"
+	"strings"
 )
 
 var curve = elliptic.P224()
@@ -57,7 +58,11 @@ func ECPointToString(point ECPoint) (s string) {
 }
 
 func StringToECPoint(s string) (point ECPoint) {
-
+	point.X = big.NewInt(0)
+	point.Y = big.NewInt(0)
+	lines := strings.Split(s, "\n")
+	point.X.SetString(strings.Split(lines[0], ": ")[1], 10)
+	point.Y.SetString(strings.Split(lines[1], ": ")[1], 10)
 	return point
 }
 func PrintECPoint(point ECPoint) {
@@ -87,4 +92,10 @@ func main() {
 	fmt.Println(result)
 
 	fmt.Println(IsOnCurveCheck(H2))
+
+	H1 = DoubleECPoints(G)
+	s := ECPointToString(H1)
+	H2 = StringToECPoint(s)
+	result = IsEqual(H1, H2)
+	fmt.Println(result)
 }
