@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var curve = elliptic.P224()
+var curve = elliptic.P256()
 
 type ECPoint struct {
 	X *big.Int
@@ -26,6 +26,10 @@ func RandBigInt(bits int) (dest big.Int) {
 
 func BasePointGGet() (point ECPoint) {
 	return ECPointGen(curve.Params().Gx, curve.Params().Gy)
+}
+
+func BasePointOrder() (res big.Int) {
+	return *curve.Params().N
 }
 
 func ECPointGen(x, y *big.Int) (point ECPoint) {
