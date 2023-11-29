@@ -1,1 +1,1 @@
-module elliptic_curves
+module github.com/safonchikk/elliptic_curves
