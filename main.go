@@ -73,7 +73,7 @@ func IsEqual(p1, p2 ECPoint) (res bool) {
 	return p1.X.Cmp(p2.X) == 0 && p1.Y.Cmp(p2.Y) == 0
 }
 
-func main() {
+/*func main() {
 	G := BasePointGGet()
 
 	k := RandBigInt(256)
@@ -98,4 +98,4 @@ func main() {
 	H2 = StringToECPoint(s)
 	result = IsEqual(H1, H2)
 	fmt.Println(result)
-}
+}*/
