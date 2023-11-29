@@ -1,4 +1,4 @@
-package main
+package elliptic_curves
 
 import (
 	"crypto/elliptic"
